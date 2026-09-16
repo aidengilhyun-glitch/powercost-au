@@ -1,0 +1,15 @@
+{
+  "name": "PowerCost AU",
+  "short_name": "PowerCost",
+  "start_url": "/powercost-au/",
+  "display": "standalone",
+  "background_color": "#f5f8f6",
+  "theme_color": "#087f5b",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Standby Power Cost Calculator Australia | PowerCost AU</title>
+<meta name="description" content="Calculate the yearly electricity cost of TVs, consoles, computers and other devices left on standby in Australia.">
+<link rel="canonical" href="https://aidengilhyun-glitch.github.io/powercost-au/calculators/standby-power/">
+<link rel="icon" href="../../favicon.svg">
+<link rel="stylesheet" href="../../styles.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9675071181946994" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header"><div class="container"><a class="brand" href="../../">PowerCost AU</a><nav aria-label="Main navigation"><a href="../../">Home</a><a href="../">Calculators</a><a href="../../guides/">Guides</a><a href="../../compare.html">Compare</a><a href="../../about.html">About</a></nav></div></header>
+<main class="container">
+<section class="hero"><p class="eyebrow">AUSTRALIAN ELECTRICITY CALCULATOR</p><h1>Standby power cost calculator</h1><p>Estimate what devices cost while they appear to be off but continue drawing electricity. Enter the measured or labelled standby watts, the number of devices and your usage rate.</p></section>
+<section class="calculator card">
+<h2>Calculate standby electricity cost</h2>
+<div class="grid">
+<label>Standby watts per device<input id="watts" type="number" min="0" step="0.1" value="5"><small>A plug-in power meter gives the best estimate.</small></label>
+<label>Number of devices<input id="devices" type="number" min="1" step="1" value="6"></label>
+<label>Standby hours per day<input id="hours" type="number" min="0" max="24" step="0.5" value="20"></label>
+<label>Electricity rate (¢/kWh)<input id="rate" type="number" min="0" step="0.01" value="32"></label>
+</div>
+<div class="results" aria-live="polite">
+<div><span>Energy per year</span><strong id="energy">0 kWh</strong></div>
+<div><span>Cost per month</span><strong id="monthly">$0.00</strong></div>
+<div><span>Cost per year</span><strong id="yearly">$0.00</strong></div>
+<div><span>Five-year cost</span><strong id="five">$0.00</strong></div>
+</div>
+<p class="note">Estimate only. Supply charges, time-of-use pricing and device power-management behaviour are not included.</p>
+</section>
+<section class="content-card">
+<h2>What counts as standby power?</h2>
+<p>Standby power is electricity used when a device is not performing its main task but remains ready to respond. Common examples include televisions waiting for a remote signal, game consoles downloading updates, printers connected to Wi-Fi, microwave clocks, smart speakers, set-top boxes and computer equipment in sleep mode.</p>
+<p>A single efficient device may use very little, but the combined cost can become noticeable when many devices remain connected every day.</p>
+</section>
+<section class="content-card">
+<h2>Worked Australian example</h2>
+<p>Six devices drawing 5 watts each for 20 hours a day use 219 kWh a year. At 32 cents per kWh, that is about $70.08 per year. Replace the example values with your own tariff and a power-meter reading for a more useful estimate.</p>
+</section>
+<section class="content-card">
+<h2>How to reduce standby use safely</h2>
+<ul>
+<li>Enable automatic sleep and energy-saving modes before unplugging equipment.</li>
+<li>Switch off entertainment equipment at an accessible power board when it will not be used for an extended period.</li>
+<li>Do not disconnect devices that need continuous power for safety, security, medical, recording or network functions.</li>
+<li>Check whether consoles and computers use a higher-power instant-on mode.</li>
+<li>Measure uncertain devices with a compliant plug-in electricity meter.</li>
+</ul>
+</section>
+<section class="content-card">
+<h2>Frequently asked questions</h2>
+<h3>Is standby power the same as an appliance being fully off?</h3><p>No. Some products have a mechanical off switch and draw virtually nothing, while others remain connected to a power supply, network or sensor.</p>
+<h3>Does a smart plug use electricity?</h3><p>Yes. A smart plug needs a small amount of power for its electronics and wireless connection. Include its own measured wattage when comparing savings.</p>
+<h3>Should I turn my fridge or router off?</h3><p>Not as a routine standby-saving measure. Refrigeration, internet, alarms and other essential equipment may need continuous power. Focus on non-essential devices and follow manufacturer instructions.</p>
+</section>
+<section class="content-card"><h2>Related tools</h2><p><a href="../television/">Television cost calculator</a> · <a href="../gaming-pc/">Gaming PC cost calculator</a> · <a href="../home-office/">Home office cost calculator</a> · <a href="../../guides/how-to-calculate-appliance-cost/">How appliance electricity cost is calculated</a></p></section>
+</main>
+<footer class="site-footer"><div class="container"><p>PowerCost AU — independent estimates for Australian households.</p><p><a href="../../about.html">About</a> · <a href="../../privacy.html">Privacy</a> · <a href="../../contact.html">Contact &amp; editorial policy</a></p></div></footer>
+<script>
+function calculate(){
+  const watts=Math.max(0,Number(document.getElementById('watts').value)||0);
+  const devices=Math.max(0,Number(document.getElementById('devices').value)||0);
+  const hours=Math.min(24,Math.max(0,Number(document.getElementById('hours').value)||0));
+  const rate=Math.max(0,Number(document.getElementById('rate').value)||0)/100;
+  const kwh=watts*devices*hours*365/1000;
+  const annual=kwh*rate;
+  document.getElementById('energy').textContent=kwh.toFixed(1)+' kWh';
+  document.getElementById('monthly').textContent='$'+(annual/12).toFixed(2);
+  document.getElementById('yearly').textContent='$'+annual.toFixed(2);
+  document.getElementById('five').textContent='$'+(annual*5).toFixed(2);
+}
+document.querySelectorAll('input').forEach(el=>el.addEventListener('input',calculate));
+calculate();
+</script>
+</body>
+</html>

@@ -39,3 +39,5 @@ https://aidengilhyun-glitch.github.io/powercost-au/guides/read-electricity-bill/
 https://aidengilhyun-glitch.github.io/powercost-au/guides/watts-vs-kwh/
 https://aidengilhyun-glitch.github.io/powercost-au/guides/time-of-use-tariffs/
 https://aidengilhyun-glitch.github.io/powercost-au/guides/energy-rating-labels/
+
+https://aidengilhyun-glitch.github.io/powercost-au/contact.html

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://aidengilhyun-glitch.github.io/powercost-au/sitemap.xml

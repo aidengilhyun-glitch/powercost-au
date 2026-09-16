@@ -43,3 +43,4 @@ https://aidengilhyun-glitch.github.io/powercost-au/guides/energy-rating-labels/
 https://aidengilhyun-glitch.github.io/powercost-au/contact.html
 
 https://aidengilhyun-glitch.github.io/powercost-au/calculators/standby-power/
+https://aidengilhyun-glitch.github.io/powercost-au/calculators/solar-self-consumption/

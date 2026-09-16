@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Solar Self-Consumption and Export Value Calculator Australia | PowerCost AU</title>
+<meta name="description" content="Estimate the annual value of Australian rooftop solar electricity used at home and exported to the grid using your generation, self-consumption, tariff and feed-in rate.">
+<link rel="canonical" href="https://aidengilhyun-glitch.github.io/powercost-au/calculators/solar-self-consumption/">
+<link rel="icon" href="../../favicon.svg">
+<link rel="stylesheet" href="../../styles.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9675071181946994" crossorigin="anonymous"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Solar Self-Consumption and Export Value Calculator Australia","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","isAccessibleForFree":true,"url":"https://aidengilhyun-glitch.github.io/powercost-au/calculators/solar-self-consumption/","description":"Estimate the annual value of rooftop solar electricity used at home and exported to the grid."}</script>
+</head>
+<body>
+<header class="site-header"><a class="brand" href="../../">⚡ PowerCost AU</a><nav><a href="../">Calculators</a><a href="../../compare.html">Compare</a><a href="../../guides/">Guides</a><a href="../../contact.html">Contact</a></nav></header>
+<main>
+<section class="hero"><p class="eyebrow">AUSTRALIAN SOLAR ESTIMATE</p><h1>Solar self-consumption and export value calculator</h1><p>Compare the estimated value of using rooftop solar in your home with exporting it to the grid. Enter annual generation from your monitoring app or a cautious estimate.</p></section>
+<section class="calculator card">
+<h2>Estimate annual solar value</h2>
+<div class="grid">
+<label>Annual solar generation (kWh)<input id="generation" type="number" min="0" step="1" value="7000"><small>Use your inverter or retailer data when available.</small></label>
+<label>Used at home (%)<input id="selfUse" type="number" min="0" max="100" step="1" value="35"></label>
+<label>Electricity usage rate (¢/kWh)<input id="usageRate" type="number" min="0" step="0.01" value="32"></label>
+<label>Solar feed-in tariff (¢/kWh)<input id="feedIn" type="number" min="0" step="0.01" value="5"></label>
+</div>
+<div class="results" aria-live="polite">
+<div><span>Solar used at home</span><strong id="selfKwh">0 kWh</strong></div>
+<div><span>Solar exported</span><strong id="exportKwh">0 kWh</strong></div>
+<div><span>Estimated bill savings</span><strong id="savings">$0.00</strong></div>
+<div><span>Estimated export credits</span><strong id="credits">$0.00</strong></div>
+<div><span>Total annual value</span><strong id="total">$0.00</strong></div>
+</div>
+<p class="note">General estimate only. It does not predict system output, installation payback or a retailer bill. Daily supply charges, tariff periods, losses, export limits and plan rules are excluded.</p>
+</section>
+<section class="content card">
+<h2>Why self-consumed solar can be worth more</h2>
+<p>Each kilowatt-hour used directly may avoid buying one kilowatt-hour at your usage rate. An exported kilowatt-hour normally earns the lower feed-in tariff. For example, at a 32¢ usage rate and 5¢ feed-in tariff, shifting one kilowatt-hour from export to daytime household use changes its estimated value by 27¢.</p>
+<p>This does not mean every load should be moved to daytime. Safety, comfort, appliance instructions and time-of-use rates still matter.</p>
+</section>
+<section class="content card">
+<h2>Worked example</h2>
+<p>A system generating 7,000 kWh a year with 35% used in the home supplies 2,450 kWh directly and exports 4,550 kWh. At 32¢/kWh for imported electricity and a 5¢/kWh feed-in tariff, the estimated annual value is $784 of avoided usage plus $227.50 of export credits, or $1,011.50 in total.</p>
+</section>
+<section class="content card">
+<h2>How to improve the estimate</h2>
+<ul>
+<li>Use a complete 12 months of inverter or retailer data when possible.</li>
+<li>Enter the usage rate that applies when solar would otherwise be imported.</li>
+<li>Check whether your feed-in tariff changes after an export threshold.</li>
+<li>For time-of-use plans, calculate peak, shoulder and off-peak periods separately.</li>
+<li>Do not treat this result as a quote for batteries, panels or installation work.</li>
+</ul>
+</section>
+<section class="content card">
+<h2>Frequently asked questions</h2>
+<h3>Does this include the daily supply charge?</h3><p>No. The supply charge usually remains payable regardless of solar generation, so this calculator focuses on variable electricity usage and export credits.</p>
+<h3>Does a battery automatically increase savings?</h3><p>Not necessarily. A battery may shift solar energy into higher-value periods, but losses, capacity, cycle limits, tariffs, purchase price and usage patterns all affect the result. This calculator does not estimate battery payback.</p>
+<h3>Where can I find my self-consumption percentage?</h3><p>Some inverter, battery and retailer portals show solar generation, household consumption and exports. Self-consumed energy is generation minus exported energy.</p>
+</section>
+<section class="content card"><h2>Related calculators and guides</h2><p><a href="../air-conditioner/">Air conditioner cost</a> · <a href="../electric-water-heater/">Electric water heating</a> · <a href="../ev-charging/">EV charging</a> · <a href="../../guides/time-of-use-tariffs/">Time-of-use tariffs</a> · <a href="../../guides/read-electricity-bill/">Read an electricity bill</a></p></section>
+</main>
+<footer><p>PowerCost AU · <a href="../../about.html">About</a> · <a href="../../privacy.html">Privacy</a> · <a href="../../contact.html">Contact &amp; editorial policy</a></p></footer>
+<script>
+function calculate(){
+ const generation=Math.max(0,Number(document.getElementById('generation').value)||0);
+ const share=Math.min(100,Math.max(0,Number(document.getElementById('selfUse').value)||0))/100;
+ const usage=Math.max(0,Number(document.getElementById('usageRate').value)||0)/100;
+ const fit=Math.max(0,Number(document.getElementById('feedIn').value)||0)/100;
+ const self=generation*share, exported=generation-self;
+ const savings=self*usage, credits=exported*fit;
+ document.getElementById('selfKwh').textContent=self.toFixed(0)+' kWh';
+ document.getElementById('exportKwh').textContent=exported.toFixed(0)+' kWh';
+ document.getElementById('savings').textContent='$'+savings.toFixed(2);
+ document.getElementById('credits').textContent='$'+credits.toFixed(2);
+ document.getElementById('total').textContent='$'+(savings+credits).toFixed(2);
+}
+document.querySelectorAll('input').forEach(i=>i.addEventListener('input',calculate));
+calculate();
+</script>
+</body>
+</html>
